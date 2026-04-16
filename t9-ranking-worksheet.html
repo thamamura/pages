@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anger Management — Ranking Activity</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: #f4f6f9; color: #2c2c2c;
+    font-size: 16px; line-height: 1.6; padding: 0 0 60px 0;
+  }
+  .page-wrap { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+
+  .header {
+    background: #1e3c72; color: #fff;
+    padding: 24px 32px 20px; margin-bottom: 0;
+  }
+  .eyebrow {
+    display: block; font-size: 0.72em; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.55); margin-bottom: 6px;
+  }
+  .header h1 {
+    font-size: 1.35em; font-weight: 800; color: #fff;
+    line-height: 1.25; margin: 0;
+  }
+
+  .card {
+    background: #fff; border-radius: 0 0 10px 10px;
+    padding: 24px 32px; box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    margin-bottom: 24px;
+  }
+  .instruction {
+    font-size: 0.95em; color: #444; margin-bottom: 18px; line-height: 1.55;
+  }
+
+  /* Rank list */
+  .rank-list {
+    list-style: none; display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .rank-item {
+    display: flex; align-items: center; gap: 12px;
+    background: #f8f9fb; border: 1px solid #dde2ea;
+    border-radius: 8px; padding: 10px 14px;
+    transition: background 0.15s;
+  }
+  .rank-item.dragging { background: #e8eef6; border-color: #1e3c72; opacity: 0.85; }
+  .rank-position {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #1e3c72; color: #fff;
+    font-size: 0.82em; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .rank-strategy { flex: 1; font-size: 0.95em; }
+  .rank-controls { display: flex; gap: 4px; flex-shrink: 0; }
+  .move-btn {
+    width: 30px; height: 30px; border: 1px solid #ccc;
+    border-radius: 5px; background: #fff; cursor: pointer;
+    font-size: 0.9em; display: flex; align-items: center;
+    justify-content: center; color: #555; transition: background 0.1s;
+  }
+  .move-btn:hover { background: #e8eef6; border-color: #1e3c72; color: #1e3c72; }
+  .move-btn:disabled { opacity: 0.3; cursor: default; }
+
+  .rank-msg {
+    font-size: 0.85em; color: #888; margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  /* Add own strategy */
+  .add-row {
+    display: flex; gap: 10px; margin-top: 4px;
+  }
+  .add-input {
+    flex: 1; padding: 9px 12px; border: 1.5px solid #ccc;
+    border-radius: 6px; font-family: inherit; font-size: 0.93em;
+    background: #fafafa; color: #2c2c2c;
+  }
+  .add-input:focus { outline: none; border-color: #1e3c72; background: #fff; }
+  .add-btn {
+    padding: 9px 18px; background: #1e3c72; color: #fff;
+    border: none; border-radius: 6px; font-family: inherit;
+    font-size: 0.93em; font-weight: 600; cursor: pointer;
+    white-space: nowrap;
+  }
+  .add-btn:hover { background: #16305e; }
+
+  /* Discussion questions */
+  .q-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .q-item {
+    background: #eef2f8; border-left: 4px solid #1e3c72;
+    border-radius: 0 6px 6px 0; padding: 10px 16px;
+    font-size: 0.93em; line-height: 1.5;
+  }
+
+  @media print {
+    body { background: white; }
+    .move-btn, .add-row { display: none; }
+    .rank-item { border: 1px solid #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <div class="header">
+    <span class="eyebrow">PSYC2001 — Tutorial 9</span>
+    <h1>Anger management — how effective are these strategies?</h1>
+  </div>
+
+  <div class="card">
+    <p class="instruction">Rank these strategies from <strong>most</strong> to <strong>least</strong> effective for reducing anger. Use the arrows to reorder. You can also add strategies your group comes up with.</p>
+
+    <ol class="rank-list" id="rank-list">
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Scream into a pillow</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Watch something funny</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Hit a punching bag</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Talk about it (after calming down)</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Write about your anger in a journal</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Play or watch competitive sport</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Express anger to the person who caused it</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Take a deep breath</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Go for a jog</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+      <li class="rank-item"><span class="rank-position"></span><span class="rank-strategy">Count to 10</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span></li>
+    </ol>
+
+    <div class="rank-msg" id="rank-msg">Use the arrows to reorder from most effective (top) to least effective (bottom).</div>
+
+    <div class="add-row">
+      <input class="add-input" id="add-input" type="text" placeholder="Add your own strategy...">
+      <button class="add-btn" onclick="addStrategy()">Add</button>
+    </div>
+  </div>
+
+
+
+</div>
+
+<script>
+function updateRankList() {
+  var list = document.getElementById('rank-list');
+  var items = Array.from(list.querySelectorAll('.rank-item'));
+  items.forEach(function(item, index) {
+    item.querySelector('.rank-position').textContent = index + 1;
+    var upBtn = item.querySelector('.move-up');
+    var downBtn = item.querySelector('.move-down');
+    upBtn.disabled = index === 0;
+    downBtn.disabled = index === items.length - 1;
+  });
+}
+
+document.getElementById('rank-list').addEventListener('click', function(event) {
+  var button = event.target.closest('.move-btn');
+  if (!button) return;
+  var item = button.closest('.rank-item');
+  var list = item.parentNode;
+  if (button.classList.contains('move-up') && item.previousElementSibling) {
+    list.insertBefore(item, item.previousElementSibling);
+  } else if (button.classList.contains('move-down') && item.nextElementSibling) {
+    list.insertBefore(item.nextElementSibling, item);
+  }
+  updateRankList();
+});
+
+function addStrategy() {
+  var input = document.getElementById('add-input');
+  var text = input.value.trim();
+  if (!text) return;
+  var list = document.getElementById('rank-list');
+  var li = document.createElement('li');
+  li.className = 'rank-item';
+  li.innerHTML = '<span class="rank-position"></span><span class="rank-strategy">' + text + '</span><span class="rank-controls"><button class="move-btn move-up" type="button" aria-label="Move up">↑</button><button class="move-btn move-down" type="button" aria-label="Move down">↓</button></span>';
+  list.appendChild(li);
+  input.value = '';
+  updateRankList();
+}
+
+document.getElementById('add-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') addStrategy();
+});
+
+updateRankList();
+</script>
+
+</body>
+</html>
