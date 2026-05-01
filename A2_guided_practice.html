@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment 2 — In-Class Practice Template | PSYC2001</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap');
+
+  :root {
+    --navy: #1e3c72;
+    --navy-light: #2a4f96;
+    --accent: #c8a84b;
+    --text: #1a1a2e;
+    --text-muted: #555570;
+    --bg: #fafaf8;
+    --surface: #ffffff;
+    --border: #dde0e8;
+    --write-bg: #f9faff;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+
+  body {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+  }
+
+  .page-wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+
+  /* Header */
+  .doc-header {
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .doc-header .unit-label {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .doc-header h1 {
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+
+  .doc-header .purpose {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* Section labels */
+  .section-label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 2.5rem 0 0.4rem;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--navy);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  h3 {
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--navy-light);
+    margin: 1.4rem 0 0.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Instruction note */
+  .instruction-note {
+    background: #eef2fa;
+    border-left: 4px solid var(--navy-light);
+    border-radius: 0 6px 6px 0;
+    padding: 0.9rem 1.2rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--text);
+  }
+
+  /* Field rows */
+  .field-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .field-label {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+
+  .field-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 0.4rem;
+  }
+
+  .write-area {
+    background: var(--write-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    min-height: 80px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.7;
+    resize: vertical;
+  }
+
+  .write-area.tall { min-height: 120px; }
+  .write-area.short { min-height: 55px; }
+
+  .write-area:focus {
+    outline: none;
+    border-color: var(--navy-light);
+    box-shadow: 0 0 0 3px rgba(42, 79, 150, 0.1);
+  }
+
+  /* CMC grid */
+  .cmc-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .cmc-item {
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .cmc-item-header {
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.9rem;
+  }
+
+  .cmc-item textarea {
+    background: var(--write-bg);
+    border: none;
+    width: 100%;
+    min-height: 90px;
+    padding: 0.75rem 0.9rem;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.65;
+    resize: vertical;
+  }
+
+  .cmc-item textarea:focus {
+    outline: none;
+    background: #f0f4ff;
+  }
+
+  /* Divider */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  /* Peer note */
+  .peer-note {
+    background: #f5f0e4;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 6px 6px 0;
+    padding: 0.9rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .peer-note strong { color: var(--navy); }
+
+  /* ════════════════════════════════════════
+     PRINT
+  ════════════════════════════════════════ */
+  @media print {
+    @page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+
+    body { font-size: 10pt; background: #fff; color: #000; }
+
+    .page-wrapper { max-width: 100%; padding: 0; }
+
+    .doc-header { border-bottom: 2pt solid #1e3c72; margin-bottom: 12pt; padding-bottom: 8pt; }
+    .doc-header .unit-label { font-size: 7pt; color: #888; }
+    .doc-header h1 { font-size: 15pt; color: #1e3c72; }
+    .doc-header .purpose { font-size: 9pt; }
+
+    .section-label { font-size: 7pt; margin-top: 14pt; }
+    h2 { font-size: 12pt; color: #1e3c72; page-break-after: avoid; }
+    h3 { font-size: 10pt; page-break-after: avoid; }
+    p, .field-desc { font-size: 9.5pt; }
+
+    .instruction-note {
+      background: #eef2fa !important;
+      border-left: 2.5pt solid #2a4f96;
+      padding: 6pt 8pt;
+      font-size: 9pt;
+      page-break-inside: avoid;
+    }
+
+    .field-group { margin-bottom: 10pt; page-break-inside: avoid; }
+    .field-label { font-size: 8.5pt; }
+
+    .write-area, .cmc-item textarea {
+      background: #fff !important;
+      border: 1pt solid #aaa;
+      min-height: 60pt;
+      font-size: 9.5pt;
+    }
+
+    .write-area.tall { min-height: 80pt; }
+    .write-area.short { min-height: 40pt; }
+
+    .cmc-item { border: 1pt solid #bbb; page-break-inside: avoid; }
+    .cmc-item-header { background: #1e3c72 !important; color: #fff !important; font-size: 7.5pt; padding: 3pt 7pt; }
+    .cmc-item textarea { min-height: 65pt; }
+
+    .peer-note {
+      background: #f5f0e4 !important;
+      border-left: 2.5pt solid #c8a84b;
+      padding: 5pt 8pt;
+      font-size: 9pt;
+      page-break-inside: avoid;
+    }
+
+    hr { margin: 12pt 0; }
+    textarea { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- HEADER -->
+  <header class="doc-header">
+    <div class="unit-label">PSYC2001 Social Psychology &nbsp;·&nbsp; Tutorial 10 — In-Class Activity</div>
+    <h1>Assessment 2 — Guided Practice</h1>
+  </header>
+
+  <!-- ══════════════════════════════════════
+       PART A: CONCEPT APPLICATION
+  ══════════════════════════════════════ -->
+  <div class="section-label">Part A</div>
+  <h2>Concept Application (Step 3)</h2>
+
+  <div class="instruction-note">
+    Choose one of your three media analyses. Using the cause → mechanism → consequence framework from the worksheet, map out how your chosen concept explains the event.
+  </div>
+
+  <div class="field-group">
+    <div class="field-label">Your event (one sentence)</div>
+    <textarea class="write-area short" placeholder="Briefly describe what happened..."></textarea>
+  </div>
+
+  <div class="field-group">
+    <div class="field-label">Your social psychology concept</div>
+    <textarea class="write-area short" placeholder="Name the concept you are applying..."></textarea>
+  </div>
+
+  <div class="cmc-grid">
+    <div class="cmc-item">
+      <div class="cmc-item-header">Cause &nbsp;—&nbsp; the specific factor that triggers a sequence</div>
+      <textarea placeholder="What triggered the sequence of events?"></textarea>
+    </div>
+    <div class="cmc-item">
+      <div class="cmc-item-header">Mechanism &nbsp;—&nbsp; the step-by-step sequence that unfolds</div>
+      <textarea placeholder="How did the concept operate? What happened step by step?"></textarea>
+    </div>
+    <div class="cmc-item">
+      <div class="cmc-item-header">Consequence &nbsp;—&nbsp; the outcome the mechanism produces</div>
+      <textarea placeholder="What was the result?"></textarea>
+    </div>
+  </div>
+
+  <div class="peer-note">
+    <strong>Pair discussion:</strong> Share your cause → mechanism → consequence with another student. Help each other test whether the concept clearly explains all three — and whether each element is in the right place.
+  </div>
+
+  <hr>
+
+  <!-- ══════════════════════════════════════
+       PART B: PROMPT 1 — CULTURAL LENS
+  ══════════════════════════════════════ -->
+  <div class="section-label">Part B</div>
+  <h2>Integrative Reflection — Prompt 1: Cultural Lens</h2>
+
+  <div class="instruction-note">
+    Using the same media analysis from Part A, apply a cultural framework from the unit. Work through the two questions below. Refer to the worksheet for a worked example.
+  </div>
+
+  <h3>Question 1 — Framework and context</h3>
+
+  <div class="field-group">
+    <div class="field-label">Which cultural framework are you applying?</div>
+    <div class="field-desc">e.g. individualism-collectivism, tightness-looseness</div>
+    <textarea class="write-area short" placeholder="Name the framework..."></textarea>
+  </div>
+
+  <div class="field-group">
+    <div class="field-label">What does this framework tell us about the cultural context of your event?</div>
+    <div class="field-desc">Where did the event take place? What does the framework say about that culture?</div>
+    <textarea class="write-area tall" placeholder="Describe the cultural context using the framework..."></textarea>
+  </div>
+
+  <h3>Question 2 — Reframing the analysis</h3>
+
+  <div class="field-group">
+    <div class="field-label">How does the cultural context shape the way your concept operated?</div>
+    <div class="field-desc">Work through cause, mechanism, and consequence — how does the cultural framework reframe your original analysis?</div>
+  </div>
+
+  <div class="cmc-grid">
+    <div class="cmc-item">
+      <div class="cmc-item-header">Cause</div>
+      <textarea placeholder="How does the cultural framework reframe what caused the event?"></textarea>
+    </div>
+    <div class="cmc-item">
+      <div class="cmc-item-header">Mechanism</div>
+      <textarea placeholder="How does the cultural framework reframe how the event unfolded?"></textarea>
+    </div>
+    <div class="cmc-item">
+      <div class="cmc-item-header">Consequence </div>
+      <textarea placeholder="How does the cultural framework reframe the consequence?"></textarea>
+    </div>
+  </div>
+
+  <div class="peer-note">
+    <strong>Pair discussion:</strong> Share your responses to both questions with your partner. First, check each other's framework choice — is it a good fit for the cultural context of the event, and does it make sense? Then test whether the framework helps you see the event from a different angle — including what caused it, how it unfolded, or what followed.
+  </div>
+
+</div>
+</body>
+</html>
